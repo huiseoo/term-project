@@ -25,7 +25,7 @@ def track_push(cap, detector):
     while True:
         success, img = cap.read()
         #resuze and fit the video to frame
-        img = cv2.resize(img, (1280, 720))
+        img = cv2.resize(img, (1920, 1080))
 
         # img = cv2.imread("videos/images/push-angle.jpeg")
         img = detector.findPose(img, False)
