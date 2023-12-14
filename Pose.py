@@ -3,6 +3,7 @@ import cv2
 import mediapipe as mp
 import math
 import time
+import csv
 
 '''
 Now this module can be used to extract datapoints easily 
@@ -40,6 +41,8 @@ class poseDetector():
         self.mpPose = mp.solutions.pose
         self.pose = self.mpPose.Pose(
             self.mode, self.upBody, self.smooth, self.detectionCon, self.trackCon)
+        self.exercise_records = []  # 운동 기록을 저장할 리스트 추가
+
 
     # draw -> display on image or not
     def findPose(self, img, draw=True):
@@ -126,6 +129,18 @@ class poseDetector():
                         2, (255, 0, 0), 2, cv2.LINE_AA, False)
 
         return angle
+    
+    def recordExercise(self, exercise_name, timestamp, landmarks):
+        record = {'Exercise': exercise_name, 'Timestamp': timestamp, 'Landmarks': landmarks}
+        self.exercise_records.append(record)
+
+    def saveExerciseRecords(self, filename='exercise_records.csv'):
+        with open(filename, mode='w', newline='') as file:
+            fieldnames = ['Exercise', 'Timestamp', 'Landmarks']
+            writer = csv.DictWriter(file, fieldnames=fieldnames)
+            writer.writeheader()
+            writer.writerows(self.exercise_records)
+
 
 
 def main():
