@@ -17,3 +17,12 @@ Through these additions, users can track and record detailed information for eac
 
 
 *We imported Mediapipe, but despite spending numerous hours during the exam period, we discovered that the Python version installed in the virtual environment was not compatible with the version of Mediapipe we installed. Consequently, after reinstalling the correct Python version in the virtual environment, persistent conflicts between the virtual environment and the installed Python version prevented us from making any progress. We attempted the same process on a different laptop, but we still couldn't find a solution. Please understand our efforts and be lenient in your evaluation. Thank you.*
+
+## **Requirements: (with versions i tested on)**
+python : 3.10.12
+Mediapipe
+opencv
+numpy
+
+
+Source: https://github.com/Yega-Noragami/AI-TRAINER
